@@ -7,6 +7,13 @@ Welcome to the Wikipedia Country Leaders Scraper – because who doesn't want to
 
 This scraper uses the [Country Leaders](https://country-leaders.onrender.com/) API to retrieve some basic information about various country leaders, as well as scrape the first paragraph of their Wikipedia page
 
+Supported Countries:
+- Morroco
+- France
+- Belgium
+- United States
+- Russia
+
 ## 🚀 Features
 
 - **Leader Lurker:** Unearth fascinating details about country leaders using the power of web scraping.
@@ -25,24 +32,24 @@ This scraper uses the [Country Leaders](https://country-leaders.onrender.com/) A
 * Clone this repository to your local machine using:
 
 ```bash
-git clone https://github.com/your-username/wikipedia-country-leaders-scraper.git
+git clone https://github.com/HazemEldabaa/wikipedia-scraper.git
 ```
 * Navigate to the scraper directory
-```bash
+```python
 cd directory/wikipedia-scraper
 ```
 * Install the required dependencies:
-```bash
+```python
 pip install -r requirements.txt
 ```
 ## 🕵️ Usage
 
 Step 1: Navigate to the scraper directory
-```bash
+```python
 cd directory/wikipedia-scraper
 ```
 Step 2: Run the scraper script from main
-```bash
+```python
 python main.py
 ```
 Step 3: Watch as the scraper delves into the depths of Wikipedia, bringing you amusing introductions and quirky details about country leaders.
