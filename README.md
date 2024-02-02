@@ -60,4 +60,4 @@ Step 3: Watch as the scraper delves into the depths of Wikipedia, bringing you a
 
 This is what an output for some leaders from the US looks like:
 
-![Demonstration of an output](https://i.ibb.co/f4XnfSS/image.png) ![BAZINGA!](https://helios-i.mashable.com/imagery/articles/07ntV8wWwvce6I0P7TISu3Q/hero-image.fill.size_1248x702.v1623365278.jpg)
+![Demonstration of an output](https://i.ibb.co/JKTqdSS/image.png) ![BAZINGA!](https://helios-i.mashable.com/imagery/articles/07ntV8wWwvce6I0P7TISu3Q/hero-image.fill.size_1248x702.v1623365278.jpg)
