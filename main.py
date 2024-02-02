@@ -6,13 +6,12 @@ def main() -> None:
     scraper = WikipediaScraper()
     scraper.refresh_cookie()
     print("Cookies created")
-    
+
     countries = scraper.get_countries()
     print("Countries:", countries)
     for country_code in countries:
-        scraper.get_leaders(country_code)
-        print(f"Leaders for {country_code}:", scraper.leaders_data[country_code])
-
+        scraper.get_leaders(country_code) 
+        print(f"Packing info for {country_code}...")
     scraper.to_json_file('leaders_data.json')
     print("Leaders data saved to leaders_data.json")
 

@@ -23,6 +23,8 @@ class WikipediaScraper:
         self.cookies_endpoint = "/cookie"
         self.leaders_data = {}
         self.cookie = self.refresh_cookie()
+        
+        self.progress_counter = 0
 
     def refresh_cookie(self) -> requests.Response:
         """
@@ -63,12 +65,16 @@ class WikipediaScraper:
         - ValueError: If the request to fetch leaders data fails.
         """
         params = {'country': country}
+        self.leader_key = 0
         response = requests.get(f"{self.base_url}{self.leaders_endpoint}", cookies=self.refresh_cookie().cookies, params=params)
         if response.status_code == 200:
             leaders = response.json()
-            self.leaders_data[country] = []
+            self.leader_info = {}
+            self.leaders_data[country] = {}
+            
 
             for leader in leaders:
+                self.leader_key += 1
                 wikipedia_url = leader.get("wikipedia_url")
                 birth_date = leader.get("birth_date")
                 first_name = leader.get("first_name")
@@ -80,7 +86,7 @@ class WikipediaScraper:
                
                 if wikipedia_url:
                     first_paragraph = self.get_first_paragraph(wikipedia_url)
-                    leader_info = {
+                    self.leader_info[self.leader_key] = {
                         "leader_id" : leader_id,
                         "wikipedia_url": wikipedia_url,
                         "first_name": first_name,
@@ -91,7 +97,7 @@ class WikipediaScraper:
                         "end_mandate": end_mandate,
                         "first_paragraph": (re.sub(r"\[.*?\]|\n|\/[^\/]+\/", "", first_paragraph))
                     }
-                    self.leaders_data[country].append(leader_info)
+                    self.leaders_data[country][self.leader_key]=(self.leader_info[self.leader_key])
         elif response.status_code != 200:
             self.refresh_cookie
             print("Cookies refreshed")
@@ -111,19 +117,25 @@ class WikipediaScraper:
         - str: The first paragraph of the Wikipedia page.
         """
         first_paragraph = ""
+        
         try:
             r = requests.get(f"{wikipedia_url}").text
             soup = BeautifulSoup(r, "html.parser")
             paragraphs = soup.find_all('p')
+            self.progress_counter += 1
             for p in paragraphs:
                 if p.find('b') and len(p.text)>15:
                     first_paragraph = p.text
                     break
-
+            print(f"Progress: {self.progress_counter}/136")         
             return first_paragraph
+           
+        except Exception as error:
+            print(f"Error: {error}")
+                
+            
+         
 
-        except Exception as e:
-            print(f"Error: {e}")
             
       
     def to_json_file(self, filepath: str) -> None:
