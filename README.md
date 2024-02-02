@@ -52,7 +52,7 @@ Step 2: Run the scraper script from main
 ```python
 python main.py
 ```
-Step 3: Watch as the scraper delves into the depths of Wikipedia, bringing you amusing introductions and quirky details about country leaders.
+Step 3: Watch as the scraper delves into the depths of Wikipedia, bringing you amusing introductions and quirky details about country leaders in the "leaders_data.json" file created in the scraper directory.
 
 
 
